@@ -1,0 +1,9 @@
+FROM maven:latest AS app_builder
+WORKDIR /java_app
+RUN git clone https://github.com/borkar-shubham/My_Projects.git
+RUN mvn clean package
+--------------------------------------------------
+FROM tomcat:latest
+COPY --from=app_builder /java_app/target/**.war /usr/local/tomcat/webapps/student.war
+EXPOSE 8080
+ENTRYPOINT ["catalina.sh", "run"]

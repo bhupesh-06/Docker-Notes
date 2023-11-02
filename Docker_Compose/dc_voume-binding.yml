@@ -1,0 +1,8 @@
+version: '3'
+services:
+  webapp1:
+    image: nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - ./ot/:/usr/share/nginx/html/

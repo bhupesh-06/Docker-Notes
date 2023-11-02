@@ -1,0 +1,11 @@
+FROM alpine
+
+RUN apk --no-cache update && apk add curl nginx nginx-mod-http-geoip2-1.16.1-r6 \
+
+rm -rf /var/cache/apt/*
+
+COPY index.html /var/www/html/
+
+EXPOSE 80
+
+CMD [“nginx”,“-g”,“daemon off;”]

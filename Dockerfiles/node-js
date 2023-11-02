@@ -1,0 +1,21 @@
+ARG VERSION
+
+FROM node:$VERSION
+
+**LABEL version=“1.0” maintainer=“Chris Rego <cXXXXXXo@gmail.com>”**
+
+RUN user add -m nodeapp
+
+USER nodeappuser
+
+WORKDIR /nodeapp
+
+COPY package.json ./
+
+RUN npm install
+
+COPY index.js src ./
+
+EXPOSE 8888
+
+CMD [ “node”, “index.js” ]

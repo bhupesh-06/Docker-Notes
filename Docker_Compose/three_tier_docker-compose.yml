@@ -1,0 +1,14 @@
+version: '3'
+services:
+  webserver:
+    image: nginx
+    ports:
+      - "80:80"
+  appserver:
+    image: tomcat
+    ports:
+      - "81:8080"
+  db-tier:
+    image: mysql
+    ports:
+      - "82:3306"
